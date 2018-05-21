@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+
+</head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<body>
+   <div class="container-fluid">
+       <div class="row">
+           <div class="col" style="background-color:lavender;">
+          <button onclick="back()" id="back" type="button" style="display: none">Back</button>
+          <button onclick="listuser()" id="listuser" type="button" style="display: block">Stamp all user</button>
+
+           </div>
+           <div class="col" style="background-color:lavender;" id="index">
+              <input id="name" type="text"  placeholder="Name"><br>
+              <input id="surname" type="text"  placeholder="Surname"><br>
+               <button id="insert" onclick="insert()" type="button" name="insert">Insert</button>
+            </div >
+            <div id="result" class="col" style="background-color:lavender">
+            </div>
+
+     </div>
+</div>
+   <script src="static/js/json.js"></script>
+</body>
+
+</html>
