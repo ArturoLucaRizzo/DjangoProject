@@ -21,30 +21,26 @@ def index(request):
 @csrf_exempt
 def listuser(request):
     js = json.loads(request.body.decode('utf-8'))
-    lists = js['listuser']
     cnx = mysql.connector.connect(**config)
     cursor = cnx.cursor(buffered=True)
     query = """SELECT name, surname FROM user"""
     cursor.execute(query)
     d = cursor.fetchall()
     data = {'list': []}
-    i=0
-    name=""
-    surname=""
+    i = 0
+    name = ""
+    surname = ""
     for row in d:
         for x in row:
 
-            if i==0:
-               i=i+1
-               name=x
+            if i == 0:
+                i = i + 1
+                name = x
             else:
-                if i==1:
-                    surname= name +" "+ x
+                if i == 1:
+                    surname = name + " " + x
                     data['list'].append("'" + surname + "'")
-                    i=0
-
-
-
+                    i = 0
     print(data)
     cursor.close()
     cnx.close()
@@ -82,10 +78,17 @@ def readj(request):
         cursor.close()
         cnx.close()
 
-def createJsonList(str1):
-    s=str(str1)
+@csrf_exempt
+def createJsonList(request):
+    js = json.loads(request.body.decode('utf-8'))
+    value = js['value']
+    list =selectWords(value,selectAll())
+    mydata = {'result': list}
+    return HttpResponse(json.dumps(mydata), content_type="application/json")
 
 
+
+@csrf_exempt
 def prova(request):
 
     method()
@@ -96,8 +99,7 @@ def method():
     mydata = {'id': '4.0', 'content': "mezzosangue"}
     print("asd")
     url = 'http://192.168.98.227:8080/Orchestrator/rest/greeting'
-    r=requests.post("http://192.168.98.227:8080/Orchestrator/rest/greeting", json= {'id': '4', 'content': "alfino5"})
-
+    r=requests.post("http://192.168.98.227:8080/Orchestrator/rest/greeting", json={'id': '4', 'content': "alfino5"})
     jsons = json.loads(r.text)
     print(jsons['id'])
     i=0
@@ -117,6 +119,42 @@ def method():
         if(i>5000):
             break
 
+def selectAll():
+    cnx = mysql.connector.connect(**config)
+    cursor = cnx.cursor(buffered=True)
+    query = """SELECT name, surname FROM user"""
+    cursor.execute(query)
+    d = cursor.fetchall()
+    data =  []
+    i = 0
+    name = ""
+    surname = ""
+    for row in d:
+        for x in row:
+
+            if i == 0:
+                i = i + 1
+                name = x
+            else:
+                if i == 1:
+                    surname = name + " " + x
+                    data.append("'" + surname + "'")
+                    i = 0
+    cursor.close()
+    cnx.close()
+    return data
 
 
+def selectWords(value, listSql):
+    i = 0
+    data = []
+
+    for i in range(len(listSql)):
+        word = listSql[i]
+        x=word.count(value)
+        if(x>0):
+             data.append(word)
+        i = i+1;
+    print(data)
+    return data
 

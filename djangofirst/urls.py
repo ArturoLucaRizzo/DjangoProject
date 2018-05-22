@@ -6,6 +6,8 @@ urlpatterns = [
     url(r'^readj', views.readj, name='readj'),
     url('prova', views.prova, name='prova'),
     url(r'^listuser', views.listuser, name='listuser'),
+    url(r'^createJsonList', views.createJsonList, name='createJsonList'),
+
 
 
 

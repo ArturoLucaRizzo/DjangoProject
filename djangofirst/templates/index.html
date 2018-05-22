@@ -3,7 +3,7 @@
 
 <head>
 
-
+<link rel="stylesheet" type="text/css" href="static/css/style.css">
 
 </head>
  <meta charset="utf-8">
@@ -12,25 +12,54 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-<body>
+{% verbatim %}
+<style>
+input.ng-invalid {
+    background-color: #ffe3c5;
+}
+input.ng-valid {
+    background-color:none;
+}
+</style>
+<body ng-app="">
+
    <div class="container-fluid">
        <div class="row">
-           <div class="col" style="background-color:lavender;">
+           <div class="col" style="background-color:none;">
           <button onclick="back()" id="back" type="button" style="display: none">Back</button>
           <button onclick="listuser()" id="listuser" type="button" style="display: block">Stamp all user</button>
 
            </div>
-           <div class="col" style="background-color:lavender;" id="index">
-              <input id="name" type="text"  placeholder="Name"><br>
-              <input id="surname" type="text"  placeholder="Surname"><br>
+           <div class="col" style="background-color:none;" id="index">
+               <form name="myForm">
+              <input id="name" type="text"  placeholder="Name" name="myInput" ng-model="myInputs" required >
+                     <span ng-show="myForm.myInput.$dirty">ok</span>
+
+                <br>
+              <input id="surname" type="text"  placeholder="Surname" name="myInput2" ng-model="myInput2" required><br>
+                   <span ng-show="myForm.myInput2.$dirty">ok</span>
+
+
+
                <button id="insert" onclick="insert()" type="button" name="insert">Insert</button>
+
+               </form>
             </div >
-            <div id="result" class="col" style="background-color:lavender">
+            <div id="result" class="col" style="background-color:none">
+            </div>
+           <div id="search" class="col" style="background-color:none">
+               <input id="search" type="text"  placeholder="search" type="string" list="list" oninput="search(this)"><br>
+                <datalist id="list">
+                   </datalist>
+
             </div>
 
      </div>
+
 </div>
+ {% endverbatim %}
    <script src="static/js/json.js"></script>
 </body>
 

@@ -1,4 +1,18 @@
-    function insert() {
+function search(e) {
+
+    if (e.value.length > 0) {
+            selectAll(e.value);
+
+
+    }
+
+
+
+}
+
+
+
+function insert() {
     var x = document.getElementById("index");
     var y = document.getElementById("result");
     var button = document.getElementById("back");
@@ -23,8 +37,10 @@ function back() {
         y.style.display = "block";
         button.style.display= "none"
         listuser.style.display = "block";
-
 }
+
+
+
 function listuser() {
     var x = document.getElementById("index");
     var y = document.getElementById("result");
@@ -36,11 +52,33 @@ function listuser() {
         button.style.display= "block"
         listuser.style.display = "none";
 
+}
 
+function selectAll(value){
+    var values= value;
+    options=""
+    ActiveDTO={"value" : value}
 
+    $.ajax({
+			type: "POST",
+			contentType : 'application/json; charset=utf-8',
+			dataType : 'json',
+			url: "/createJsonList",
+            data: JSON.stringify(ActiveDTO) ,
+            success :function(data) {
+			    document.getElementById('list').innerHTML = "";
+			       $.each(data.result, function(k,v) {
+			             options += '<option value="' + v + '" />';
+                   })
+                   document.getElementById('list').innerHTML = options;
+			}
+		});
 
 
 }
+
+
+
 $(document).ready(function(){
 
 
