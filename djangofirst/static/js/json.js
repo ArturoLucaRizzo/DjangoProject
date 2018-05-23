@@ -14,27 +14,33 @@ function search(e) {
 
 function insert() {
     var x = document.getElementById("index");
-    var y = document.getElementById("result");
+    var y = document.getElementById("res");
+     var result = document.getElementById("result");
     var button = document.getElementById("back");
-    var listuser= document.getElementById("listuser");
 
-        x.style.display = "none";
-        y.innerHTML="";
         y.style.display = "block";
-
+        result.innerHTML="";
         button.style.display= "block"
-        listuser.style.display = "none";
+        x.style.display = "none";
+
 
 
 }
 function back() {
-    var x = document.getElementById("result");
+    var x = document.getElementById("res");
     var y = document.getElementById("index");
     var button = document.getElementById("back");
-    var listuser = document.getElementById("listuser");
 
         x.style.display = "none";
         y.style.display = "block";
+        button.style.display= "none"
+}
+function backUser() {
+    var x = document.getElementById("resultUser");
+    var button = document.getElementById("backUser");
+    var listuser = document.getElementById("listuser");
+
+        x.style.display = "none";
         button.style.display= "none"
         listuser.style.display = "block";
 }
@@ -42,12 +48,9 @@ function back() {
 
 
 function listuser() {
-    var x = document.getElementById("index");
-    var y = document.getElementById("result");
-    var button = document.getElementById("back");
+    var y = document.getElementById("resultUser");
+    var button = document.getElementById("backUser");
     var listuser= document.getElementById("listuser");
-
-        x.style.display = "none";
         y.style.display = "block";
         button.style.display= "block"
         listuser.style.display = "none";
@@ -134,10 +137,10 @@ $("#listuser").click(function(e) {
 
 
                     });
-                    document.getElementById('result').innerHTML = lista;
+                    document.getElementById('resultUser').innerHTML = lista;
 
                 }else if((data.result == "notValid") ){
-                	document.getElementById('result').innerHTML = "Cognome gia presente nel DB";
+                	document.getElementById('resultUser').innerHTML = "error";
 				}
 
 

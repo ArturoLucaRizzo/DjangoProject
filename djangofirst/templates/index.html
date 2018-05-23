@@ -27,29 +27,34 @@ input.ng-valid {
 
    <div class="container-fluid">
        <div class="row">
-           <div class="col" style="background-color:none;">
-          <button onclick="back()" id="back" type="button" style="display: none">Back</button>
-          <button onclick="listuser()" id="listuser" type="button" style="display: block">Stamp all user</button>
+           <div class="col" style="background-color:lavender;">
+
+               <button onclick="listuser()" id="listuser" type="button" style="display: block">Stamp all user</button>
+               <button onclick="backUser()" id="backUser" type="button" style="display: none">Back</button>
+               <div id="resultUser" class="col" style="display: none"></div>
 
            </div>
-           <div class="col" style="background-color:none;" id="index">
-               <form name="myForm">
-              <input id="name" type="text"  placeholder="Name" name="myInput" ng-model="myInputs" required >
-                     <span ng-show="myForm.myInput.$dirty">ok</span>
 
+           <div class="col" style="background-color:lavenderblush;" >
+               <div id="index">
+              <input id="name" type="text"  placeholder="Name"  >
                 <br>
-              <input id="surname" type="text"  placeholder="Surname" name="myInput2" ng-model="myInput2" required><br>
-                   <span ng-show="myForm.myInput2.$dirty">ok</span>
-
-
-
+              <input id="surname" type="text"  placeholder="Surname" ><br>
                <button id="insert" onclick="insert()" type="button" name="insert">Insert</button>
+               </div>
+               <div id="res" style="display: none">
+                   <button onclick="back()" id="back" type="button">Back</button>
+                   <div id="result" >
+                   </div>
 
-               </form>
+               </div>
+
+
+
+
             </div >
-            <div id="result" class="col" style="background-color:none">
-            </div>
-           <div id="search" class="col" style="background-color:none">
+
+           <div id="search" class="col" style="background-color:lavenderblush">
                <input id="search" type="text"  placeholder="search" type="string" list="list" oninput="search(this)"><br>
                 <datalist id="list">
                    </datalist>
